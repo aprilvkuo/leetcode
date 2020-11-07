@@ -50,26 +50,25 @@ public:
         int sum_tmp = 0;
         int carry_tmp = 0;
         while (true){
-
             sum_tmp = carry_tmp;
-            if (l1)
+            if (l1) {
                 sum_tmp += l1->val;
-            if (l2)
-                sum_tmp += l2->val;
-            if (sum_tmp == 0 && !l1 && !l2)
-                return head->next;
-            carry_tmp = 0;
-            if (sum_tmp > 10){
-                carry_tmp = sum_tmp / 10;
-                sum_tmp = sum_tmp % 10;
+                l1 = l1->next;
             }
+            
+            if (l2) {
+                sum_tmp += l2->val;
+                l2 = l2->next;
+            }
+            
+            carry_tmp = sum_tmp / 10;
+            sum_tmp = sum_tmp % 10;
             result->next = new ListNode(sum_tmp);
             result = result->next;
-            if (l1)
-                l1 = l1->next;
-            if (l2)
-                l2 = l2->next;
+            if (carry_tmp == 0 && !l1 && !l2)
+                break;
+            
         }
-    return head->next;
+        return head->next;
     }
 };

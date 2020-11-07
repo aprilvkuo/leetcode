@@ -26,8 +26,11 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         map<int, int> num2index;
         vector<int> result;
+        
+        
         for (int index = 0; index < nums.size(); index++)
             num2index[nums[index]] = index;
+        
         for (int index = 0; index < nums.size(); index++){
             int res_data =  target - nums[index];
             if (num2index.find(res_data) != num2index.end()){

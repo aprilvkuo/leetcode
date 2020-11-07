@@ -818,23 +818,6 @@ using namespace std;
 //    return false;
 //}
 
-vector<string> permutation(string S) {
-    vector<string> res;
-    for (int i = 0; i < S.size(); i++) {
-        string new_s  = "";
-        new_s += S[i];
-        string res_s = "";
-        for(int j = 0; j < S.size(); j++){
-            if (j != i) {
-                res_s += S[j];
-            }
-        }
-        for (auto item: permutation(res_s)) {
-            res.push_back(new_s + item);
-        }
-    }
-    return res;
-}
 
 //vector<string> permutation(string S) {
 //    vector<string> res;
@@ -875,10 +858,23 @@ vector<string> permutation(string S) {
 //}
 
 
+
+
+
+
+
+
+
+
+
+
 int main() {
 //    cout << isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#") << endl;
 //    vector<vector<int> > a = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
 //    cout << Find(7, a);
-    printf("hello world");
+   	// Complex c1(10, 6), c2(2, 3), c3;
+	// c3 = c1 + c2;
+	// c3.display();
+	printf("hello world");
     return 0;
 }
