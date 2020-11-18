@@ -41,6 +41,11 @@ public:
 https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
 */
 int findRepeatNumber(vector<int>& nums);
+/*
+面试题4. 二维数组中的查找
+https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/
+*/
+bool findNumberIn2DArray(vector<vector<int>>& array, int target)
 
 /*
 剑指 Offer 06. 从尾到头打印链表
@@ -109,6 +114,62 @@ https://leetcode-cn.com/problems/jian-sheng-zi-lcof/
 */
 int cuttingRope(int n);
 
+/*
+剑指 Offer 18. 删除链表的节点
+https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/
+*/
+ListNode* deleteNode(ListNode* head, int val)
+
+/*
+剑指 Offer 19. 正则表达式匹配
+思路： 动态规划
+https://leetcode-cn.com/problems/jian-sheng-zi-lcof/
+*/
+bool isMatch(string s, string p)
+
+/*
+剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+思路： 双指针
+https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/
+*/
+vector<int> exchange(vector<int>& nums);
+
+/*
+剑指 Offer 22. 链表中倒数第k个节点
+思路： 双指针
+https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/
+*/
+ListNode* getKthFromEnd(ListNode* head, int k);
+/*
+剑指 Offer 24. 反转链表
+https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
+*/
+ListNode* reverseList(ListNode* head);
+/*
+剑指 Offer 25. 合并两个排序的链表
+https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/submissions/
+*/
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);
+
+/*
+剑指 Offer 26. 树的子结构
+https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/submissions/
+*/
+bool isSubStructure(TreeNode* A, TreeNode* B);
+bool isSubStructure1(TreeNode* A, TreeNode* B);
+
+/*
+剑指 Offer 27.二叉树的镜像
+https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/
+*/
+TreeNode* mirrorTree(TreeNode* root);
+
+/*
+剑指 Offer 28. 对称的二叉树
+https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/
+*/
+bool isSymmetric(TreeNode* root);
+bool isSymmetric(TreeNode* left, TreeNode* right);
 
 
 

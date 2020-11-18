@@ -198,4 +198,221 @@ int Solution::cuttingRope(int n) {
     return dp[n];
 }
 
+bool Solution::isSubStructure(TreeNode* A, TreeNode* B) {
+    if (!B || !A) {
+        return false;
+    }
+    else{
+        return isSubStructure1(A, B) || isSubStructure(A->left, B) || isSubStructure(A->right, B);
+    }
+    
+}
+
+bool Solution::isSubStructure1(TreeNode* A, TreeNode* B) {
+    if (!B || !A) {
+        return false;
+    }
+    if (A->val == B->val &&
+        (!B->left || isSubStructure1(A->left, B->left)) &&
+        (!B->right || isSubStructure1(A->right, B->right))) {
+        return true;
+    }
+    return false;
+}
+
+bool Solution::isMatch(string s, string p) {
+    // return isMatch(s, p, 0, 0);
+    vector<vector<int>> dp(s.size() + 1, vector<int>(p.size() + 1, 0));
+    for (int i = 0; i <= s.size(); i++) {
+        for (int j = 0; j <= p.size(); j++) {
+            if (j == 0) {
+                dp[i][j] = i == 0 ? 1: 0;
+            } else {
+                if ((i > 0 && j > 0) && 
+                    (s[i-1] == p[j-1] || p[j-1] == '.')) {
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                else {
+                    if (j > 0 && p[j - 1] == '*') {
+                        if (i > 0 && (p[j - 2] == '.' || p[j-2] == s[i-1])) {
+                            dp[i][j] |= dp[i-1][j];
+                        }
+                        if (j > 1) {
+                            dp[i][j] |= dp[i][j-2];
+                        }   
+                    }
+
+                }
+                
+            }
+            
+        }
+    }
+    return dp[s.size()][p.size()];  
+}
+
+ListNode* Solution::deleteNode(ListNode* head, int val) {
+    ListNode* tmp_head = new  ListNode(-1);
+    tmp_head->next = head;
+    head = tmp_head;
+    while (head) {
+        if (head->next && head->next->val == val) {
+            head->next = head->next->next;
+        }
+        head = head->next;
+    }
+    return tmp_head->next;
+}
+
+ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
+    ListNode* tmp_head = new ListNode(-1);
+    ListNode* head = tmp_head;
+    while (l1 && l2) {
+        if (l1->val < l2->val) {
+            tmp_head->next = l1;
+            tmp_head = tmp_head->next;
+            l1 = l1->next;
+        } else {
+            tmp_head->next = l2;
+            tmp_head = tmp_head->next;
+            l2 = l2->next;
+        }
+    }
+    while (l1) {
+        tmp_head->next = l1;
+        tmp_head = l1;
+        l1 = l1->next;
+    }
+    while (l2) {
+        tmp_head->next = l2;
+        tmp_head = l2;
+        l2 = l2->next;
+    }
+    return head->next;
+}
+
+  ListNode* Solution::reverseList(ListNode* head) {
+        if (!head || !head->next) {
+            return head;
+        }
+        ListNode* new_head = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return new_head;
+        // vector<ListNode*> vec_tmp;
+        // while (head) {
+        //     vec_tmp.push_back(head);
+        //     head = head->next;
+        // }
+        // ListNode *ret_node = vec_tmp.back();
+        // ListNode *tmp_ret_node = ret_node;
+        // vec_tmp.pop_back();
+        // while (vec_tmp.size() != 0) {
+        //     ret_node->next = vec_tmp.back();
+        //     ret_node = vec_tmp.back();
+        //     vec_tmp.pop_back();
+        // }
+        // ret_node->next = nullptr;
+        // return tmp_ret_node;
+
+
+        // ListNode *ret_node = head;
+        // ListNode *tmp_head = head->next;
+        // ret_node->next = nullptr;
+        // while (tmp_head) {
+        //     ListNode *tmp_head2 = ret_node;
+        //     ret_node = tmp_head;
+
+        //     tmp_head = tmp_head->next;
+        //     ret_node->next = tmp_head2;
+        // }
+        // return ret_node;
+    }
+
+     vector<int> Solution::exchange(vector<int>& nums) {
+        int left = 0, right = nums.size()-1;
+        while (left < right) {
+            while (left < right && nums[left] % 2 == 1) {
+                left++;
+            }
+            while (left < right && nums[right] % 2 == 0) {
+                right--;
+            }
+            int tmp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tmp;
+        }
+        return nums;
+    }
+
+
+ListNode* Solution::getKthFromEnd(ListNode* head, int k) {
+    ListNode* fast = head, *slow = head;
+    while (k > 0 && fast) {
+        fast = fast->next;
+        k--;
+    }
+    while (fast != nullptr) {
+        fast = fast->next;
+        slow = slow->next;
+    }
+    return slow;
+}
+
+
+bool Solution::findNumberIn2DArray(vector<vector<int>>& array, int target) {
+    if (array.size() == 0) {
+        return false;
+    }
+    int size_0 = array.size();
+    int size_1 = array[0].size();
+    int x = 0, y = size_1 - 1;
+    while (true) {
+        if (x >= size_0 || y < 0) {
+            return false;
+        }
+        if (array[x][y] == target) {
+            return true;
+        } else if (array[x][y] > target) {
+            y --;
+        } else {
+            x ++;
+        }
+    }
+    return true;
+}
+
+TreeNode* Solution::mirrorTree(TreeNode* root) {
+        if (!root) {
+            return root;
+        }
+        TreeNode *right = mirrorTree(root->left);
+        TreeNode *left = mirrorTree(root->right);
+        root->left = left;
+        root->right = right;
+        return root;
+    }
+
+
+bool Solution::isSymmetric(TreeNode* root) {
+    if (!root) {
+        return true;
+    }
+    return isSymmetric(root->left, root->right);
+}
+
+bool Solution::isSymmetric(TreeNode* left, TreeNode* right) {
+    if (!left && !right) {
+        return true;
+    }
+    if (!(left && right)) {
+        return false;
+    }
+    if (left->val != right->val) {
+        return false;
+    }
+    return isSymmetric(left->left, right->right) && 
+            isSymmetric(left->right, right->left);
+}
+
 }
