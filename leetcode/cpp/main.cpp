@@ -3,6 +3,10 @@
 #include "stack"
 #include "stdio.h"
 #include "sstream"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -861,20 +865,44 @@ using namespace std;
 
 
 
+using namespace std;
 
-
-
-
-
-
-
-int main() {
-//    cout << isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#") << endl;
-//    vector<vector<int> > a = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
-//    cout << Find(7, a);
-   	// Complex c1(10, 6), c2(2, 3), c3;
-	// c3 = c1 + c2;
-	// c3.display();
-	printf("hello world");
+class Solution{
+public:
+string PrintMinNumber(vector<int>& numbers){
+    if(numbers.empty())
+        return "";
+    string res;
+    sort(numbers.begin(), numbers.end(), cmp);
+    for(int i = 0; i < numbers.size(); ++i)
+        res += to_string(numbers[i]);
+    return res;
+}
+static bool cmp(int a, int b){
+    string A = to_string(a) + to_string(b);
+    string B = to_string(b) + to_string(a);
+    return A < B;
+}
+};
+int main()
+{
+    vector<int> numbers = {3, 32, 321};
+    Solution T;
+    string res = T.PrintMinNumber(numbers);
+    cout << res << endl;
     return 0;
 }
+
+
+
+
+// int main() {
+// //    cout << isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#") << endl;
+// //    vector<vector<int> > a = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+// //    cout << Find(7, a);
+//    	// Complex c1(10, 6), c2(2, 3), c3;
+// 	// c3 = c1 + c2;
+// 	// c3.display();
+// 	printf("hello world");
+//     return 0;
+// }

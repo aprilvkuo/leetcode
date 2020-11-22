@@ -33,8 +33,6 @@ struct TreeNode {
 };
  
 
-class Solution {
-public:
 /*
 剑指 Offer 03. 数组中重复的数字
 思路： 哈希表
@@ -171,9 +169,30 @@ https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/
 bool isSymmetric(TreeNode* root);
 bool isSymmetric(TreeNode* left, TreeNode* right);
 
+/*
+剑指 Offer 31. 栈的压入、弹出序列
+https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/
+*/
+bool validateStackSequences(vector<int>& pushed, vector<int>& popped);
 
+/*
+剑指 Offer 32 - I. 从上到下打印二叉树
+https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/
+*/
+vector<int> levelOrder(TreeNode* root);
 
-};
+/*
+剑指 Offer 32 - II. 从上到下打印二叉树 II
+https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/
+*/
+vector<vector<int>> levelOrder(TreeNode* root)
+
+/*
+剑指 Offer 32 - III. 从上到下打印二叉树 III
+https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/
+*/
+vector<vector<int>> levelOrder(TreeNode* root)
+
 
 
 
@@ -210,6 +229,46 @@ private:
     vector<int> v1;
     vector<int> v2;
 };
+
+
+/*
+剑指 Offer 30. 包含min函数的栈
+https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/
+*/
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    vector<int> data, min_data;
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        if (min_data.size() == 0) {
+            data.push_back(x);
+            min_data.push_back(x);
+        } else {
+            data.push_back(x);
+            min_data.push_back(std::min(x, min_data.back()));
+        }
+    }
+    
+    void pop() {
+        if (data.size() != 0) {
+            data.pop_back();
+            min_data.pop_back();
+        } 
+    }
+    
+    int top() {
+        return data.back();
+    }
+    
+    int min() {
+        return min_data.back();
+    }
+};
+
 
     
 }

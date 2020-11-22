@@ -5,3 +5,5 @@
 build
 */build
 cmake-build-debug
+main.cpp
+*.exe

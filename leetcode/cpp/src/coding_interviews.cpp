@@ -10,7 +10,7 @@
 #include "coding_interviews.h"
 namespace leetcode {
 
-int Solution::findRepeatNumber(vector<int>& nums) {
+int findRepeatNumber(vector<int>& nums) {
     int tmp = 0;
     for (int i = 0; i < nums.size(); i++) {
         while (nums[i] != i) {
@@ -25,7 +25,7 @@ int Solution::findRepeatNumber(vector<int>& nums) {
     return 0;
 }
 
-vector<int> Solution::reversePrint(ListNode* head) {
+vector<int> reversePrint(ListNode* head) {
     vector<int> res;
     if (head == nullptr) {
         return res;
@@ -35,11 +35,11 @@ vector<int> Solution::reversePrint(ListNode* head) {
     return res;
 }
 
-TreeNode* Solution::buildTree(vector<int>& preorder, vector<int>& inorder) {
+TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
     return buildTree(preorder, inorder, 0, preorder.size()-1, 0, preorder.size()-1);
 }
 
-TreeNode* Solution::buildTree(vector<int>& preorder, vector<int>& inorder, int p_begin, int p_end, int i_begin, int i_end) {
+TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder, int p_begin, int p_end, int i_begin, int i_end) {
     if (p_end < p_begin) {
         return nullptr;
     }
@@ -54,7 +54,7 @@ TreeNode* Solution::buildTree(vector<int>& preorder, vector<int>& inorder, int p
     return root;
 }
 
-int Solution::fib(int n) {
+int fib(int n) {
     int mod_num = 1000000007;
     if (n <= 1) {
         return n;
@@ -69,7 +69,7 @@ int Solution::fib(int n) {
     return target;    
 }
 
-int Solution::minArray(vector<int>& numbers) {
+int minArray(vector<int>& numbers) {
     int left = 0, right = numbers.size() - 1;
     int mid  = 0;
     while (left < right) {
@@ -86,7 +86,7 @@ int Solution::minArray(vector<int>& numbers) {
     return numbers[left];
 }
 
-bool Solution::exist(vector<vector<char>>& board, string word) {
+bool exist(vector<vector<char>>& board, string word) {
     if (board.size() == 0 || board[0].size() == 0) {
         return 0;
     }
@@ -100,7 +100,7 @@ bool Solution::exist(vector<vector<char>>& board, string word) {
     return false;
 }
 
-bool Solution::exist(vector<vector<char>>& board, string word, int begin, int x, int y) {
+bool exist(vector<vector<char>>& board, string word, int begin, int x, int y) {
     if (begin == word.size()) {
         return true;
     }
@@ -122,7 +122,7 @@ bool Solution::exist(vector<vector<char>>& board, string word, int begin, int x,
     return result;
 }
 
-double Solution::myPow(double x, int n) {
+double myPow(double x, int n) {
     if (x == 0 || x == 1) {
         return x;
     }
@@ -141,7 +141,7 @@ double Solution::myPow(double x, int n) {
     return result;
 }
 
-int Solution::hammingWeight(uint32_t n) {
+int hammingWeight(uint32_t n) {
     int cnt = 0;
     for (int i = 0; i < 32; i ++) {
         if (n & 1 ){
@@ -152,7 +152,7 @@ int Solution::hammingWeight(uint32_t n) {
     return cnt;
 }
 
-int Solution::movingCount(int m, int n, int k) {
+int movingCount(int m, int n, int k) {
     vector<vector<bool>> flags (m, vector<bool>(n, false));
     int cnt_num = 0;
     for (int i = 0; i < m; i++) {
@@ -173,7 +173,7 @@ int Solution::movingCount(int m, int n, int k) {
     }
     return cnt_num;
 }
-bool Solution::moving_result(int m, int n, int k) {
+bool moving_result(int m, int n, int k) {
     int cnt = 0;
     while (m != 0) {
         cnt += (m % 10);
@@ -186,7 +186,7 @@ bool Solution::moving_result(int m, int n, int k) {
     return cnt <= k ? true: false;
 }
 
-int Solution::cuttingRope(int n) {
+int cuttingRope(int n) {
     vector<int> dp(n + 1, 0);
     dp[2] = 1;
     for (int i = 3; i <= n; i++) {
@@ -198,7 +198,7 @@ int Solution::cuttingRope(int n) {
     return dp[n];
 }
 
-bool Solution::isSubStructure(TreeNode* A, TreeNode* B) {
+bool isSubStructure(TreeNode* A, TreeNode* B) {
     if (!B || !A) {
         return false;
     }
@@ -208,7 +208,7 @@ bool Solution::isSubStructure(TreeNode* A, TreeNode* B) {
     
 }
 
-bool Solution::isSubStructure1(TreeNode* A, TreeNode* B) {
+bool isSubStructure1(TreeNode* A, TreeNode* B) {
     if (!B || !A) {
         return false;
     }
@@ -220,7 +220,7 @@ bool Solution::isSubStructure1(TreeNode* A, TreeNode* B) {
     return false;
 }
 
-bool Solution::isMatch(string s, string p) {
+bool isMatch(string s, string p) {
     // return isMatch(s, p, 0, 0);
     vector<vector<int>> dp(s.size() + 1, vector<int>(p.size() + 1, 0));
     for (int i = 0; i <= s.size(); i++) {
@@ -251,7 +251,7 @@ bool Solution::isMatch(string s, string p) {
     return dp[s.size()][p.size()];  
 }
 
-ListNode* Solution::deleteNode(ListNode* head, int val) {
+ListNode* deleteNode(ListNode* head, int val) {
     ListNode* tmp_head = new  ListNode(-1);
     tmp_head->next = head;
     head = tmp_head;
@@ -264,7 +264,7 @@ ListNode* Solution::deleteNode(ListNode* head, int val) {
     return tmp_head->next;
 }
 
-ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     ListNode* tmp_head = new ListNode(-1);
     ListNode* head = tmp_head;
     while (l1 && l2) {
@@ -291,7 +291,7 @@ ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
     return head->next;
 }
 
-  ListNode* Solution::reverseList(ListNode* head) {
+  ListNode* reverseList(ListNode* head) {
         if (!head || !head->next) {
             return head;
         }
@@ -329,7 +329,7 @@ ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
         // return ret_node;
     }
 
-     vector<int> Solution::exchange(vector<int>& nums) {
+     vector<int> exchange(vector<int>& nums) {
         int left = 0, right = nums.size()-1;
         while (left < right) {
             while (left < right && nums[left] % 2 == 1) {
@@ -346,7 +346,7 @@ ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
     }
 
 
-ListNode* Solution::getKthFromEnd(ListNode* head, int k) {
+ListNode* getKthFromEnd(ListNode* head, int k) {
     ListNode* fast = head, *slow = head;
     while (k > 0 && fast) {
         fast = fast->next;
@@ -360,7 +360,7 @@ ListNode* Solution::getKthFromEnd(ListNode* head, int k) {
 }
 
 
-bool Solution::findNumberIn2DArray(vector<vector<int>>& array, int target) {
+bool findNumberIn2DArray(vector<vector<int>>& array, int target) {
     if (array.size() == 0) {
         return false;
     }
@@ -382,7 +382,7 @@ bool Solution::findNumberIn2DArray(vector<vector<int>>& array, int target) {
     return true;
 }
 
-TreeNode* Solution::mirrorTree(TreeNode* root) {
+TreeNode* mirrorTree(TreeNode* root) {
         if (!root) {
             return root;
         }
@@ -394,14 +394,14 @@ TreeNode* Solution::mirrorTree(TreeNode* root) {
     }
 
 
-bool Solution::isSymmetric(TreeNode* root) {
+bool isSymmetric(TreeNode* root) {
     if (!root) {
         return true;
     }
     return isSymmetric(root->left, root->right);
 }
 
-bool Solution::isSymmetric(TreeNode* left, TreeNode* right) {
+bool isSymmetric(TreeNode* left, TreeNode* right) {
     if (!left && !right) {
         return true;
     }
@@ -414,5 +414,98 @@ bool Solution::isSymmetric(TreeNode* left, TreeNode* right) {
     return isSymmetric(left->left, right->right) && 
             isSymmetric(left->right, right->left);
 }
+
+bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
+    vector<int> states;
+    int p_id = 0;
+    for (int i = 0; i < pushed.size(); i++) {
+    
+        states.push_back(pushed[i]);
+        while (states.size() > 0 && 
+                p_id < popped.size() &&
+                states.back() == popped[p_id]) {
+            states.pop_back();
+            p_id++;
+        }
+    }
+    return states.size() == 0;
+}
+
+vector<int> levelOrder(TreeNode* root) {
+    vector<int> res;
+    queue<TreeNode*> q;
+    q.push(root);
+    while (q.size() != 0) {
+        auto head = q.front();
+        if (head) {
+            if (head->left) q.push(head->left);
+            if (head->right) q.push(head->right);
+            res.push_back(head->val);
+        }
+        
+        q.pop();
+    }
+    return res;
+}
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> res;
+    queue<TreeNode*> q;
+    queue<TreeNode*> next_q;
+    q.push(root);
+    vector<int> now_res;
+    while (q.size() != 0 || next_q.size() != 0) {
+        if (q.size() == 0) {
+            res.push_back(now_res);
+            now_res.clear();
+            q = next_q;
+            next_q = queue<TreeNode*>();
+        }
+        auto head = q.front();
+        if (head) {
+            if (head->left) next_q.push(head->left);
+            if (head->right) next_q.push(head->right);
+            now_res.push_back(head->val);
+        }
+        
+        q.pop();
+    }
+    if (now_res.size() != 0) res.push_back(now_res);
+    return res;
+}
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> res;
+    queue<TreeNode*> q;
+    queue<TreeNode*> next_q;
+    q.push(root);
+    vector<int> now_res;
+    int level_index = 0;
+    while (q.size() != 0 || next_q.size() != 0) {
+        if (q.size() == 0) {
+            if (level_index % 2) reverse(now_res.begin(), now_res.end());
+            res.push_back(now_res);
+            now_res.clear();
+            q = next_q;
+            next_q = queue<TreeNode*>();
+            level_index++;
+        }
+        auto head = q.front();
+        if (head) {
+            if (head->left) next_q.push(head->left);
+            if (head->right) next_q.push(head->right);
+            now_res.push_back(head->val);
+        }
+        
+        q.pop();
+    }
+    if (level_index % 2) {
+        reverse(now_res.begin(), now_res.end());
+    }
+    if (now_res.size() != 0 ) res.push_back(now_res);
+    return res;
+}
+
+
 
 }
